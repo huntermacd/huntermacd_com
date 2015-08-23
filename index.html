@@ -2,16 +2,28 @@
 <html>
 <head>
     <title>huntermacd.com</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header>
         <svg id="logo">
-            <rect class="logo_rect" x="5" y="5" width="30" height="30"/>
-            <rect class="logo_rect" x="5" y="40" width="30" height="30"/>
-            <rect class="logo_rect" x="40" y="40" width="30" height="30"/>
-            <rect class="logo_rect" x="75" y="40" width="30" height="30"/>
-            <polyline fill="none" stroke="white" stroke-width="5" points="20,20 20,55 37.5,40 55,55 72.5,40 90,55 115,55"/>
+            <circle cx="20" cy="20" r="15"/>
+            <circle cx="20" cy="55" r="15"/>
+            <circle cx="55" cy="55" r="15"/>
+            <circle cx="90" cy="55" r="15"/>
+            <polyline fill="none" stroke="white" stroke-width="5" stroke-linejoin="round" points="20,20 20,55 37.5,40 55,55 72.5,40 90,55 115,55" stroke-linecap="round"/>
         </svg>
+        <nav>
+            <ul>
+                <a href="/"><li>Contact</li></a>
+                <a href="/cv"><li>CV</li></a>
+                <a href="/work"><li>Work</li></a>
+                <a href="/blog"><li>Blog</li></a>
+            </ul>
+        </nav>
     </header>
+    <main>
+        content goes here
+    </main>
 </body>
 </html>
