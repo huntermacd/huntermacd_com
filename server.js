@@ -27,21 +27,20 @@ app.use(express.static('public'));
 
 // routes
 app.get('/', function(request, response){
-    response.sendFile(__dirname + '/index.html');
+    response.render('contact');
 });
 
 app.get('/cv', function(request, response){
-    response.sendFile(__dirname + '/templates/cv.html');
+    response.render('cv');
 });
 
 app.get('/work', function(request, response){
-    response.sendFile(__dirname + '/templates/work.html');
+    response.render('work');
 });
 
 app.get('/blog', function(request, response){
     // Mongo returns an object, so convert data to array for iteration
     db.collection('posts').find().toArray(function(err, docs){
         response.render('blog', {posts: docs});
-        db.close();
     });
 });

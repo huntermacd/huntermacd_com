@@ -1,20 +1,35 @@
-header,
-main {
-    padding: 10px;
-}
-
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
     bottom: 0;
+    position: fixed;
+    top: 10px;
     width: 110px;
 }
 
+.logo {
+    height: 75px;
+    width: 110px;
+}
+
+nav ul {
+    float: left;
+    list-style: none;
+    margin-left: -30px;
+}
+
+nav ul a li {
+    color: #000;
+    font-family: 'Nova Mono', monospace;
+    font-size: 1.25em;
+    padding: 5px;
+    text-align: center;
+    width: 80px;
+}
+
+nav ul a {
+    text-decoration: none;
+}
+
 main {
-    position: fixed;
-    top: 0;
-    left: 110px;
-    bottom: 0;
-    width: 100%;
+    margin: 75px 0 0 110px;
+    padding: 0 15%;
 }

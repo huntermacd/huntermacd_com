@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog</title>
-</head>
-<body>
+{% extends '../index.html' %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block content %}
     {% for post in posts %}
         <article>
             <h3>{{ post.title }}</h3>
@@ -20,5 +19,4 @@
             </p>
         </article>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}
