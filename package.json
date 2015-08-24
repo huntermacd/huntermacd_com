@@ -9,7 +9,6 @@
   "author": "Hunter MacDermut",
   "license": "ISC",
   "dependencies": {
-    "consolidate": "^0.13.1",
     "express": "^4.13.1",
     "mongodb": "^2.0.35",
     "swig": "^1.4.2"

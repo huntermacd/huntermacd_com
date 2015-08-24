@@ -2,9 +2,9 @@
 var express = require('express');
 var app = express();
 
-// import Consolidate for Swig templating
-var cons = require('consolidate');
-app.engine('html', cons.swig);
+// setup Swig for templating
+var swig = require('swig');
+app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/templates');
 
