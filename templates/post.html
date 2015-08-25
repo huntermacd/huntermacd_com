@@ -1,0 +1,20 @@
+{% extends '../index.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+    <article>
+        <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
+        <p>{{ post.body }}</p>
+        <p>Posted: <i>{{ post.date.toLocaleString() }}</i></p>
+        <p>Tags: 
+            {% for tag in post.tags %}
+                {% if loop.last %}
+                    <a href="/tag/{{ tag }}">{{ tag }}</a>
+                {% else %}
+                    <a href="/tag/{{ tag }}">{{ tag }},&nbsp;</a>
+                {% endif %}
+            {% endfor %}
+        </p>
+    </article>
+{% endblock content %}

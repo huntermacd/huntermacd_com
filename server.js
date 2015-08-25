@@ -44,3 +44,13 @@ app.get('/blog', function(request, response){
         response.render('blog', {posts: docs});
     });
 });
+
+app.get('/post/:slug', function(request, response){
+    db.collection('posts').findOne({slug: request.params.slug}, function(err, doc){
+        if (doc === null){
+            response.status(404).json('No post found at ' + request.params.slug);
+        } else {
+            response.render('post', {post: doc});
+        };
+    });
+});
