@@ -55,6 +55,16 @@ app.get('/post/:slug', function(request, response){
     });
 });
 
+app.get('/tag/:tag', function(request, response){
+    db.collection('posts').find({tags: request.params.tag}).toArray(function(err, docs){
+        if (docs.length === 0){
+            response.status(404).render('404');
+        } else {
+            response.render('tag', {posts: docs, tag: request.params.tag});
+        }
+    });
+});
+
 // custom middleware for error handling (run this if all other routes fail)
 app.use(function(request, response, next) {
     response.status(404).render('404');
