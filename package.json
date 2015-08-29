@@ -13,6 +13,7 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
+    "habitat": "^3.1.2",
     "mongodb": "^2.0.35",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",

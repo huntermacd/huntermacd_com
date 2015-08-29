@@ -64,8 +64,12 @@ app.use(express.static('public'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
+// setup Habitat for fetching environment variables
+var habitat = require('habitat');
+var env = habitat.load('config.env');
+
 var session = require('express-session');
-app.use(session({ secret: 'keyboard cat' }));
+app.use(session({ secret: env.get("SESSION_SECRET") }));
 app.use(passport.initialize());
 app.use(passport.session());
 
