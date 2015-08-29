@@ -1,0 +1,23 @@
+{% extends '../index.html' %}
+
+{% block title %}Add Post{% endblock title %}
+
+{% block content %}
+    <form action="/add" method="post">
+        <div>
+            <label>Title</label>
+            <input type="text" name="title"/>
+        </div>
+        <div>
+            <label>Body:</label>
+            <textarea name="body"></textarea>
+        </div>
+        <div>
+            <label>Tags (comma-separated):</label>
+            <input type="text" name="tags"/>
+        </div>
+        <div>
+            <input type="submit" value="Add Post"/>
+        </div>
+    </form>
+{% endblock content %}
