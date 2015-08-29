@@ -132,7 +132,26 @@ app.get('/add', function(request, response){
     }
 });
 
+app.post('/add', function(request, response){
+    var slug = request.body.title.replace(/ /g, '_').toLowerCase();
+    db.collection('posts').insert({
+        title: request.body.title,
+        body: request.body.body,
+        date: new Date(),
+        tags: cleanTags(request.body.tags),
+        slug: slug
+    });
+    response.redirect('/post/' + slug);
+});
+
 // custom middleware for error handling (run this if all other routes fail)
 app.use(function(request, response, next) {
     response.status(404).render('404');
 });
+
+// helper functions
+function cleanTags(tagString){
+    var re = /\s*,\s*/;
+    var tagArray = tagString.split(re);
+    return tagArray;
+}
