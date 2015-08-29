@@ -9,6 +9,7 @@
   "author": "Hunter MacDermut",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "express": "^4.13.1",
     "express-session": "^1.11.3",

@@ -16,6 +16,9 @@ MongoClient.connect('mongodb://localhost:27017/blog', function(err, database){
     });
 });
 
+// setup password encryption
+var bcrypt = require('bcrypt-nodejs');
+
 // setup Passport for user auth
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -29,7 +32,7 @@ passport.use(new LocalStrategy(
             if (username !== user.username){
                 return done(null, false);
             }
-            if (password !== user.password){
+            if (!bcrypt.compareSync(password, user.password)){
                 return done(null, false);
             }
             return done(null, user);
