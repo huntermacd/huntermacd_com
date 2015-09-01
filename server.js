@@ -98,7 +98,7 @@ app.get('/post/:slug', function(request, response){
         if (doc === null){
             response.status(404).render('404');
         } else {
-            response.render('post', {post: doc});
+            response.render('post', {post: doc, loggedIn: request.user});
         };
     });
 });
@@ -124,12 +124,8 @@ app.post('/login',
     })
 );
 
-app.get('/add', function(request, response){
-    if (request.isAuthenticated()){
-        response.render('add');
-    } else {
-        response.redirect('/login');
-    }
+app.get('/add', loggedIn, function(request, response, next){
+    response.render('add');
 });
 
 app.post('/add', function(request, response){
@@ -144,6 +140,36 @@ app.post('/add', function(request, response){
     response.redirect('/post/' + slug);
 });
 
+app.get('/edit/:slug', function(request, response){
+    db.collection('posts').findOne({slug: request.params.slug}, function(err, doc){
+        if (doc === null){
+            response.status(404).render('404');
+        } else {
+            response.render('edit', {post: doc});
+        };
+    });
+});
+
+app.post('/edit/:slug', function(request, response){
+    var slug = request.body.title.replace(/ /g, '_').toLowerCase();
+    db.collection('posts').findOne({slug: request.params.slug}, function(err, doc){
+        if (doc === null){
+            response.status(404).render('404');
+        } else {
+            db.collection('posts').update({_id: doc._id}, {$set:
+                {
+                    title: request.body.title,
+                    body: request.body.body,
+                    edited: new Date(),
+                    tags: cleanTags(request.body.tags),
+                    slug: slug
+                }
+            });
+        };
+    });
+    response.redirect('/post/' + slug);
+});
+
 // custom middleware for error handling (run this if all other routes fail)
 app.use(function(request, response, next) {
     response.status(404).render('404');
@@ -154,4 +180,12 @@ function cleanTags(tagString){
     var re = /\s*,\s*/;
     var tagArray = tagString.split(re);
     return tagArray;
+}
+
+function loggedIn(request, response, next){
+    if (request.user){
+        next();
+    } else {
+        response.redirect('/login');
+    }
 }

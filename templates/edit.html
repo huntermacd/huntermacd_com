@@ -1,0 +1,23 @@
+{% extends '../index.html' %}
+
+{% block title %}Edit Post{% endblock title %}
+
+{% block content %}
+    <form action="/edit/{{ post.slug }}" method="post">
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" value="{{ post.title }}"/>
+        </div>
+        <div>
+            <label>Body:</label>
+            <textarea name="body">{{ post.body }}</textarea>
+        </div>
+        <div>
+            <label>Tags (comma-separated):</label>
+            <input type="text" name="tags" value="{{ post.tags }}"/>
+        </div>
+        <div>
+            <input type="submit" value="Edit Post"/>
+        </div>
+    </form>
+{% endblock content %}
