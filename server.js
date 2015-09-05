@@ -109,6 +109,12 @@ app.get('/post/:slug', function(request, response){
     });
 });
 
+app.get('/tags', function(request, response){
+    db.collection('tags').find().sort({name: 1}).toArray(function(err, docs){
+        response.render('tags', {tags: docs});
+    });
+});
+
 app.get('/tag/:tag', function(request, response){
     db.collection('posts').find({tags: request.params.tag}).toArray(function(err, docs){
         if (docs.length === 0){
@@ -185,6 +191,9 @@ app.use(function(request, response, next) {
 function cleanTags(tagString){
     var re = /\s*,\s*/;
     var tagArray = tagString.split(re);
+    for (var i = 0; i < tagArray.length; i++) {
+        db.collection('tags').update({name: tagArray[i]}, {name: tagArray[i]}, {upsert: true});
+    };
     return tagArray;
 }
 

@@ -3,6 +3,7 @@
 {% block title %}Blog{% endblock title %}
 
 {% block content %}
+    <a href="/tags">View All Tags</a>
     {% for post in posts %}
         <article>
             <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
