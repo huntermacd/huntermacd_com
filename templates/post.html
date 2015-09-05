@@ -19,7 +19,7 @@
             {% endfor %}
         </p>
     </article>
-    {% if loggedIn %}
+    {% if user %}
         <a href="/edit/{{ post.slug }}">Edit Post</a>
     {% endif %}
 {% endblock content %}

@@ -22,6 +22,9 @@
                 <a href="/cv"><li>CV</li></a>
                 <a href="/work"><li>Work</li></a>
                 <a href="/blog"><li>Blog</li></a>
+                {% if user %}
+                    <a href="/add"><li>Add Post</li></a>
+                {% endif %}
             </ul>
         </nav>
     </header>

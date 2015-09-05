@@ -73,6 +73,12 @@ app.use(session({ secret: env.get("SESSION_SECRET") }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// if logged-in, add 'user' to every template
+app.use(function(request, response, next){
+    response.locals.user = request.user;
+    next();
+});
+
 // routes
 app.get('/', function(request, response){
     response.render('contact');
@@ -98,7 +104,7 @@ app.get('/post/:slug', function(request, response){
         if (doc === null){
             response.status(404).render('404');
         } else {
-            response.render('post', {post: doc, loggedIn: request.user});
+            response.render('post', {post: doc});
         };
     });
 });
@@ -119,7 +125,7 @@ app.get('/login', function(request, response){
 
 app.post('/login',
     passport.authenticate('local', {
-        successRedirect: '/add',
+        successRedirect: '/',
         failureRedirect: '/login'
     })
 );
