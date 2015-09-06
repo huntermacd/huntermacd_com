@@ -4,7 +4,11 @@
 
 {% block content %}
     <a href="/tags">View All Tags</a>
+    <hr>
     {% for post in posts %}
+        {% if !loop.first %}
+            <hr>
+        {% endif %}
         <article>
             <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
             {% autoescape false %}
@@ -22,4 +26,15 @@
             </p>
         </article>
     {% endfor %}
+    <hr>
+    {% if page > 1 %}
+        <a href="/blog/?page={{ page - 1 }}">Newer Posts</a> |
+    {% else %}
+        <span>Newer Posts</span> |
+    {% endif %}
+    {% if pagesLeft %}
+        <a href="/blog/?page={{ page + 1 }}">Older Posts</a>
+    {% else %}
+        <span>Older Posts</span>
+    {% endif %}
 {% endblock content %}

@@ -92,11 +92,21 @@ app.get('/work', function(request, response){
     response.render('work');
 });
 
-app.get('/blog', function(request, response){
+app.get('/blog', checkPage, function(request, response){
     // Mongo returns an object, so convert data to array for iteration
-    db.collection('posts').find().toArray(function(err, docs){
-        response.render('blog', {posts: docs});
-    });
+    if (request.query.page){
+        db.collection('posts').find().skip(10 * (request.query.page - 1)).limit(10).sort({date: -1}).toArray(function(err, docs){
+            if (docs.length === 0){
+                response.status(404).render('404');
+            } else {
+                response.render('blog', {posts: docs});
+            }
+        });
+    } else {
+        db.collection('posts').find().limit(10).sort({date: -1}).toArray(function(err, docs){
+            response.render('blog', {posts: docs});
+        });
+    }
 });
 
 app.get('/post/:slug', function(request, response){
@@ -116,7 +126,7 @@ app.get('/tags', function(request, response){
 });
 
 app.get('/tag/:tag', function(request, response){
-    db.collection('posts').find({tags: request.params.tag}).toArray(function(err, docs){
+    db.collection('posts').find({tags: request.params.tag}).sort({date: 1}).toArray(function(err, docs){
         if (docs.length === 0){
             response.status(404).render('404');
         } else {
@@ -203,4 +213,14 @@ function loggedIn(request, response, next){
     } else {
         response.redirect('/login');
     }
+}
+
+function checkPage(request, response, next){
+    // add page number of posts from query string
+    var page = parseInt(request.query.page);
+    db.collection('posts').count(function(err, count){
+        response.locals.page = page;
+        response.locals.pagesLeft = count > (page * 10);
+        next();
+    });
 }

@@ -4,6 +4,9 @@
 
 {% block content %}
     {% for post in posts %}
+        {% if !loop.first %}
+            <hr>
+        {% endif %}
         <article>
             <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
             {% autoescape false %}
