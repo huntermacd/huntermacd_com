@@ -217,7 +217,7 @@ function loggedIn(request, response, next){
 
 function checkPage(request, response, next){
     // add page number of posts from query string
-    var page = parseInt(request.query.page);
+    var page = request.query.page ? parseInt(request.query.page) : 1; // if no page set, select 1
     db.collection('posts').count(function(err, count){
         response.locals.page = page;
         response.locals.pagesLeft = count > (page * 10);
