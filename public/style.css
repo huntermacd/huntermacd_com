@@ -1,5 +1,15 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: maroon;
+    text-decoration: none;
+}
+
 header {
     bottom: 0;
+    padding: 55px;
     position: fixed;
     top: 10px;
     width: 110px;
@@ -18,11 +28,15 @@ nav ul {
 
 nav ul a li {
     color: #000;
-    font-family: 'Nova Mono', monospace;
     font-size: 1.25em;
     padding: 5px;
     text-align: center;
     width: 80px;
+}
+
+nav ul a li,
+h3 {
+    font-family: 'Nova Mono', monospace;
 }
 
 nav ul a {
@@ -30,6 +44,35 @@ nav ul a {
 }
 
 main {
-    margin: 75px 0 0 110px;
-    padding: 0 15%;
+    margin: 75px 55px 75px 210px;
+}
+
+input[type="text"] {
+    margin: 10px 0;
+}
+
+input[type="password"] {
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 500px;
+    resize: none;
+    width: 100%;
+}
+
+h3 {
+    background: linear-gradient(to right, white, lightgray);
+    border-radius: 25px;
+}
+
+pre {
+    background-color: cornsilk;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pages,
+.all-tags {
+    text-align: center;
 }

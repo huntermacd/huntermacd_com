@@ -3,19 +3,15 @@
 {% block title %}Blog{% endblock title %}
 
 {% block content %}
-    <a href="/tags">View All Tags</a>
-    <hr>
+    <div class="all-tags"><a href="/tags">View All Tags</a></div>
     {% for post in posts %}
-        {% if !loop.first %}
-            <hr>
-        {% endif %}
         <article>
             <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
             {% autoescape false %}
             <p>{{ post.body }}</p>
             {% endautoescape %}
-            <p>Posted: <i>{{ post.date.toLocaleString() }}</i>{% if post.edited %} | Edited: <i>{{ post.edited.toLocaleString() }}</i>{% endif %}</p>
-            <p>Tags: 
+            <p><small>Posted: <i>{{ post.date.toLocaleString() }}</i>{% if post.edited %} | Edited: <i>{{ post.edited.toLocaleString() }}</i>{% endif %}</small></p>
+            <p><small>Tags: 
                 {% for tag in post.tags %}
                     {% if loop.last %}
                         <a href="/tag/{{ tag }}">{{ tag }}</a>
@@ -23,18 +19,19 @@
                         <a href="/tag/{{ tag }}">{{ tag }}</a>,&nbsp;
                     {% endif %}
                 {% endfor %}
-            </p>
+            </small></p>
         </article>
     {% endfor %}
-    <hr>
-    {% if page > 1 %}
-        <a href="/blog/?page={{ page - 1 }}">Newer Posts</a> |
-    {% else %}
-        <span>Newer Posts</span> |
-    {% endif %}
-    {% if pagesLeft %}
-        <a href="/blog/?page={{ page + 1 }}">Older Posts</a>
-    {% else %}
-        <span>Older Posts</span>
-    {% endif %}
+    <div class="pages">
+        {% if page > 1 %}
+            <a href="/blog/?page={{ page - 1 }}">Newer Posts</a> |
+        {% else %}
+            <span>Newer Posts</span> |
+        {% endif %}
+        {% if pagesLeft %}
+            <a href="/blog/?page={{ page + 1 }}">Older Posts</a>
+        {% else %}
+            <span>Older Posts</span>
+        {% endif %}
+    </div>
 {% endblock content %}

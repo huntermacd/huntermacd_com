@@ -3,23 +3,13 @@
 {% block title %}Add Post{% endblock title %}
 
 {% block content %}
+    <h3>Add New Post</h3>
     <form action="/add" method="post">
-        <div>
-            <label>Title</label>
-            <input type="text" name="title"/>
-        </div>
-        <div>
-            <label>Body:</label>
-            <textarea name="body"></textarea>
-            <button>pre</button>
-        </div>
-        <div>
-            <label>Tags (comma-separated):</label>
-            <input type="text" name="tags"/>
-        </div>
-        <div>
+            <input type="text" name="title" placeholder="title" required/><br/>
+            <textarea name="body" placeholder="body" required></textarea><br/>
+            <button>pre</button><br/>
+            <input type="text" name="tags" placeholder="comma-separated tags" required/><br/>
             <input type="submit" value="Add Post"/>
-        </div>
     </form>
     <script src="/pre.js"></script>
 {% endblock content %}

@@ -3,7 +3,7 @@
 {% block title %}All Tags{% endblock title %}
 
 {% block content %}
-    <p>All Tags</p>
+    <h3>All Tags</h3>
     <ul>
         {% for tag in tags %}
             <li><a href="/tag/{{ tag.name }}">{{ tag.name }}</a></li>
