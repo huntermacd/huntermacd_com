@@ -24,12 +24,12 @@
     {% endfor %}
     <div class="pages">
         {% if page > 1 %}
-            <a href="/blog/?page={{ page - 1 }}">Newer Posts</a> |
+            <a href="/?page={{ page - 1 }}">Newer Posts</a> |
         {% else %}
             <span>Newer Posts</span> |
         {% endif %}
         {% if pagesLeft %}
-            <a href="/blog/?page={{ page + 1 }}">Older Posts</a>
+            <a href="/?page={{ page + 1 }}">Older Posts</a>
         {% else %}
             <span>Older Posts</span>
         {% endif %}

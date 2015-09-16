@@ -1,5 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 
 a {
@@ -8,10 +9,12 @@ a {
 }
 
 header {
+    background-color: maroon;
     bottom: 0;
+    left: 0;
     padding: 55px;
     position: fixed;
-    top: 10px;
+    top: 0;
     width: 110px;
 }
 
@@ -20,31 +23,22 @@ header {
     width: 110px;
 }
 
-nav ul {
-    float: left;
-    list-style: none;
-    margin-left: -30px;
+.links {
+    display: flex;
 }
 
-nav ul a li {
-    color: #000;
-    font-size: 1.25em;
-    padding: 5px;
+.links a {
+    flex-grow: 1;
     text-align: center;
-    width: 80px;
 }
 
-nav ul a li,
-h3 {
-    font-family: 'Nova Mono', monospace;
-}
-
-nav ul a {
-    text-decoration: none;
+.links i {
+    color: white;
+    font-size: 1.5em;
 }
 
 main {
-    margin: 75px 55px 75px 210px;
+    margin: 75px 50px 75px 270px;
 }
 
 input[type="text"] {
@@ -64,6 +58,7 @@ textarea {
 h3 {
     border-bottom: 1px solid gray;
     border-right: 1px solid gray;
+    font-family: 'Nova Mono', monospace;
 }
 
 pre {

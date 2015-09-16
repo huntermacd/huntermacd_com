@@ -80,19 +80,7 @@ app.use(function(request, response, next){
 });
 
 // routes
-app.get('/', function(request, response){
-    response.render('contact');
-});
-
-app.get('/cv', function(request, response){
-    response.render('cv');
-});
-
-app.get('/work', function(request, response){
-    response.render('work');
-});
-
-app.get('/blog', checkPage, function(request, response){
+app.get('/', checkPage, function(request, response){
     // Mongo returns an object, so convert data to array for iteration
     if (request.query.page){
         db.collection('posts').find().skip(10 * (request.query.page - 1)).limit(10).sort({date: -1}).toArray(function(err, docs){
