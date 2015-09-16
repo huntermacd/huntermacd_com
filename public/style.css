@@ -62,13 +62,12 @@ textarea {
 }
 
 h3 {
-    background: linear-gradient(to right, white, lightgray);
-    border-radius: 25px;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
 }
 
 pre {
     background-color: cornsilk;
-    border-radius: 10px;
     padding: 10px;
 }
 
