@@ -23,6 +23,24 @@ header {
     width: 110px;
 }
 
+.pic {
+    border-radius: 50%;
+    height: 110px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.pic img {
+    max-width: 100%;
+}
+
+.bio {
+    color: white;
+    font-size: 0.75em;
+    margin: 15px 0;
+    text-align: center;
+}
+
 .links {
     display: flex;
 }
