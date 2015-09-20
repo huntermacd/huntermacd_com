@@ -28,6 +28,7 @@ header {
     height: 110px;
     margin-top: 10px;
     overflow: hidden;
+    width: 110px;
 }
 
 .pic img {
@@ -53,6 +54,10 @@ header {
 .links i {
     color: white;
     font-size: 1.5em;
+}
+
+.fa-caret-square-o-down {
+    display: none;
 }
 
 main {
@@ -87,4 +92,41 @@ pre {
 .pages,
 .all-tags {
     text-align: center;
+}
+
+@media (max-width: 770px){
+    header {
+        margin-right: -1px;
+        padding: 5px;
+        position: static;
+        width: auto;
+    }
+
+    main {
+        margin: 50px;
+    }
+
+    .sidebar {
+        display: none;
+        overflow: auto;
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .pic {
+        margin: 0 auto;
+    }
+
+    .links {
+        margin: 0 auto;
+        width: 200px;
+    }
+
+    .fa-caret-square-o-down {
+        color: white;
+        display: inline-block;
+        float: right;
+        font-size: 3em;
+        padding: 16px;
+    }
 }

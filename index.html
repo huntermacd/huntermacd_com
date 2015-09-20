@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>huntermacd.com | {% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,20 +19,20 @@
                 <polyline fill="none" stroke="maroon" stroke-width="5" stroke-linejoin="round" points="20,20 20,55 37.5,40 55,55 72.5,40 90,55 115,55" stroke-linecap="round"/>
             </svg>
         </a>
-        <div class="pic">
-            <img src="huntermacd.jpg">
-        </div>
-        <p class="bio">
-            I'm Hunter MacDermut. I make computer things for people using HTML, CSS, JavaScript, and Python.
-        </p>
-        <div class="links">
-            <a href="mailto:whosebluesanyway@gmail.com"><i class="fa fa-envelope-square"></i></a>
-            <a href="https://github.com/huntermacd"><i class="fa fa-github-square"></i></a>
-            <a href="https://www.linkedin.com/pub/hunter-macdermut/6b/2b6/816"><i class="fa fa-linkedin-square"></i></a>
+        <i id="caret" class="fa fa-caret-square-o-down"></i>
+        <div id="sidebar" class="sidebar">
+            {% include "templates/info.html" %}
         </div>
     </header>
     <main>
         {% block content %}{% endblock content %}
     </main>
+    <script>
+        var sidebar = document.getElementById('sidebar');
+        var caret = document.getElementById('caret');
+        caret.addEventListener('click', function(){
+            sidebar.style.display = "inline-block";
+        });
+    </script>
 </body>
 </html>
