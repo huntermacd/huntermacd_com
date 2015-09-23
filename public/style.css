@@ -96,7 +96,7 @@ pre {
 
 @media (max-width: 770px){
     header {
-        margin-right: -1px;
+        /*margin-right: -1px;*/
         padding: 5px;
         position: static;
         width: auto;
@@ -104,17 +104,35 @@ pre {
 
     main {
         margin: 50px;
+        transition: margin-top 0.5s;
+    }
+
+    main.bump {
+        margin-top: 265px;
     }
 
     .sidebar {
-        display: none;
+        background-color: maroon;
+        left: 0;
         overflow: auto;
         padding: 15px 0;
+        position: absolute;
+        top: -140px;
+        transition: top 0.5s;
         width: 100%;
+        z-index: -1;
+    }
+
+    .sidebar.reveal {
+        top: 88px;
     }
 
     .pic {
         margin: 0 auto;
+    }
+
+    .bio {
+        padding: 0 10px;
     }
 
     .links {
@@ -128,5 +146,10 @@ pre {
         float: right;
         font-size: 3em;
         padding: 16px;
+        transition: transform 0.5s;
+    }
+
+    .fa-caret-square-o-down.rotated {
+        transform: rotate(180deg);
     }
 }
