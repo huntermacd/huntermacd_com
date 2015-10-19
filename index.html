@@ -23,17 +23,20 @@
         <div id="sidebar" class="sidebar">
             {% include "templates/info.html" %}
         </div>
+        <div id="dropdown" class="dropdown">
+            {% include "templates/info.html" %}
+        </div>
     </header>
     <main id="main">
         {% block content %}{% endblock content %}
     </main>
     <script>
         var main = document.getElementById('main');
-        var sidebar = document.getElementById('sidebar');
+        var dropdown = document.getElementById('dropdown');
         var caret = document.getElementById('caret');
         caret.addEventListener('click', function(){
             this.classList.toggle('rotated');
-            sidebar.classList.toggle('reveal');
+            dropdown.classList.toggle('reveal');
             main.classList.toggle('bump');
         });
     </script>

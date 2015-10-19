@@ -94,37 +94,44 @@ pre {
     text-align: center;
 }
 
+.dropdown {
+    display: none;
+}
+
 @media (max-width: 770px){
     header {
-        /*margin-right: -1px;*/
         padding: 5px;
         position: static;
-        width: auto;
+        width: 100%;
     }
 
     main {
         margin: 50px;
-        transition: margin-top 0.5s;
+        transition: transform 0.5s;
     }
 
-    main.bump {
-        margin-top: 265px;
+    .bump {
+        transform: translateY(210px);
     }
 
     .sidebar {
-        background-color: maroon;
-        left: 0;
-        overflow: auto;
-        padding: 15px 0;
-        position: absolute;
-        top: -140px;
-        transition: top 0.5s;
-        width: 100%;
-        z-index: -1;
+        display: none;
     }
 
-    .sidebar.reveal {
-        top: 88px;
+    .dropdown {
+        background-color: maroon;
+        display: block;
+        left: 0;
+        padding: 5px;
+        position: absolute;
+        top: -121px;
+        transition: transform 0.5s;
+        width: 100%;
+        z-index: -9999;
+    }
+
+    .reveal {
+        transform: translateY(210px);
     }
 
     .pic {
